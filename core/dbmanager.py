@@ -1,7 +1,7 @@
 import sqlite3
 import json
 
-database_filename = '../databases/dics.db'
+database_filename = 'core/databases/dics.db'
 
 def _get_meaning_dict(word: str, database: str):
     connection = sqlite3.connect(database_filename)
