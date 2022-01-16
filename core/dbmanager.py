@@ -1,6 +1,14 @@
 import sqlite3
 import json
 
+dict_names = {
+    'Sereh': 'سره',
+    'Motaradef': 'مترادف',
+    'Teyfi': 'طیفی',
+    'Farhangestan': 'فرهنگستان',
+    'Emlaei': 'املایی',
+}
+
 database_filename = 'core/databases/dics.db'
 # database_filename = 'databases/dics.db'
 
@@ -24,7 +32,11 @@ def _get_meaning_dict(word: str, database: str):
                             'context': result[3],
                             }
                 table_output.append(result_dict)
-                output.append({'table_name':table_name, 'result':table_output})
+                output.append({
+                    'table_name': table_name,
+                    'dict_name': dict_names[table_name],
+                    'result': table_output
+                })
 
     else:
         query_text = f'SELECT * FROM {table_name} WHERE word IS \'{word}\';'
